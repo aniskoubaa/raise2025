@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # RAISE 2025 - International Summer School on Robotics & AI in Systems Engineering
 
 ## 🤖 AI-Empowered Robotics for Smart Agriculture
@@ -226,3 +227,6 @@ This repository is licensed under the MIT License. See [LICENSE](LICENSE) for de
 ---
 
 **Welcome to RAISE 2025! Let's build the future of agricultural robotics together! 🚀🌱** 
+=======
+# raise2025
+>>>>>>> b88bd7684c9afa16b97241b1d261d2e903f88cc2
