@@ -1,0 +1,52 @@
+# RAISE 2025 - Python Requirements
+# Core AI/ML packages
+torch>=2.0.0
+torchvision>=0.15.0
+ultralytics>=8.0.0
+opencv-python>=4.8.0
+numpy>=1.24.0
+matplotlib>=3.7.0
+Pillow>=9.5.0
+scikit-learn>=1.3.0
+pandas>=2.0.0
+seaborn>=0.12.0
+
+# Google AI packages
+google-generativeai>=0.3.0
+google-cloud-aiplatform>=1.38.0
+
+# ROS2 Python packages
+rclpy
+geometry-msgs
+std-msgs
+sensor-msgs
+cv-bridge
+tf2-ros
+tf2-geometry-msgs
+nav-msgs
+action-msgs
+
+# Development and utility packages
+jupyter>=1.0.0
+notebook>=6.5.0
+ipywidgets>=8.0.0
+tqdm>=4.65.0
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# Image processing and visualization
+imageio>=2.31.0
+plotly>=5.15.0
+gradio>=3.40.0
+
+# Data handling
+pyyaml>=6.0
+argparse
+logging
+pathlib
+
+# Testing and development
+pytest>=7.4.0
+black>=23.7.0
+flake8>=6.0.0
+pre-commit>=3.3.0 

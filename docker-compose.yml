@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  raise2025:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: raise2025:latest
+    container_name: raise2025_dev
+    stdin_open: true
+    tty: true
+    network_mode: host
+    environment:
+      - DISPLAY=${DISPLAY:-:0}
+      - ROS_DOMAIN_ID=42
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - .:/workspace:rw
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ~/.Xauthority:/home/raise2025/.Xauthority:rw
+    working_dir: /workspace
+    command: /home/raise2025/start.sh
+    
+  # Optional: Jupyter Lab service
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: raise2025:latest
+    container_name: raise2025_jupyter
+    ports:
+      - "8888:8888"
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - .:/workspace:rw
+    working_dir: /workspace
+    command: >
+      bash -c "
+        source /opt/ros/humble/setup.bash &&
+        jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''
+      "
+    profiles:
+      - jupyter
+
+  # Optional: ROS2 GUI tools
+  gui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: raise2025:latest
+    container_name: raise2025_gui
+    stdin_open: true
+    tty: true
+    network_mode: host
+    environment:
+      - DISPLAY=${DISPLAY:-:0}
+      - ROS_DOMAIN_ID=42
+    volumes:
+      - .:/workspace:rw
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ~/.Xauthority:/home/raise2025/.Xauthority:rw
+    working_dir: /workspace
+    command: >
+      bash -c "
+        source /opt/ros/humble/setup.bash &&
+        rqt
+      "
+    profiles:
+      - gui 

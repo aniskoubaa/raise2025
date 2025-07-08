@@ -1,0 +1,53 @@
+{
+  "name": "RAISE 2025 Development Environment",
+  "dockerFile": "../Dockerfile",
+  "context": "..",
+  
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "python.defaultInterpreterPath": "/usr/bin/python3",
+    "python.formatting.provider": "black",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "files.associations": {
+      "*.launch": "xml",
+      "*.urdf": "xml",
+      "*.xacro": "xml"
+    }
+  },
+  
+  "extensions": [
+    "ms-python.python",
+    "ms-python.black-formatter",
+    "ms-vscode.cpptools",
+    "ms-vscode.cmake-tools",
+    "ms-toolsai.jupyter",
+    "redhat.vscode-yaml",
+    "ms-vscode.vscode-json",
+    "streetsidesoftware.code-spell-checker",
+    "donjayamanne.githistory",
+    "eamodio.gitlens"
+  ],
+  
+  "forwardPorts": [8888],
+  
+  "postCreateCommand": "source /opt/ros/humble/setup.bash && echo 'RAISE 2025 Development Environment Ready!'",
+  
+  "remoteUser": "raise2025",
+  
+  "mounts": [
+    "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.Xauthority,target=/home/raise2025/.Xauthority,type=bind,consistency=cached"
+  ],
+  
+  "runArgs": [
+    "--network=host",
+    "--env=DISPLAY=${localEnv:DISPLAY}",
+    "--env=ROS_DOMAIN_ID=42"
+  ],
+  
+  "workspaceFolder": "/workspace",
+  
+  "shutdownAction": "stopContainer"
+} 
