@@ -1,0 +1,12 @@
+#delete using force remove all existing update_github.sh files
+git rm -r --cached update_github.sh
+
+update_github.sh
+
+
+
+
+
+
+
+
